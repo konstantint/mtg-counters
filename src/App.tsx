@@ -118,22 +118,22 @@ export default function App() {
       />
 
       {/* Middle Bar */}
-      <div className="h-48 bg-zinc-950 flex items-center justify-center gap-12 z-30 shadow-2xl border-y border-zinc-800 relative touch-none select-none">
-        <button onPointerDown={() => resetGame()} className="p-4 text-zinc-400 hover:text-white transition-colors">
-          <RotateCcw size={84} />
+      <div className="h-24 md:h-48 bg-zinc-950 flex items-center justify-center gap-6 md:gap-12 z-30 shadow-2xl border-y border-zinc-800 relative touch-none select-none">
+        <button onPointerDown={() => resetGame()} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors">
+          <RotateCcw className="w-10 h-10 md:w-[84px] md:h-[84px]" />
         </button>
         
-        <div className="flex items-center gap-8">
-          <button onPointerDown={() => rollDice(20)} className="p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-4 text-5xl font-bold">
-            <Dices size={84} /> d20
+        <div className="flex items-center gap-4 md:gap-8">
+          <button onPointerDown={() => rollDice(20)} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-2 md:gap-4 text-2xl md:text-5xl font-bold">
+            <Dices className="w-10 h-10 md:w-[84px] md:h-[84px]" /> d20
           </button>
-          <button onPointerDown={() => flipCoin()} className="p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-4 text-5xl font-bold">
+          <button onPointerDown={() => flipCoin()} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-2 md:gap-4 text-2xl md:text-5xl font-bold">
             Coin
           </button>
         </div>
 
-        <button onPointerDown={() => setShowSettings(true)} className="p-4 text-zinc-400 hover:text-white transition-colors">
-          <Settings size={84} />
+        <button onPointerDown={() => setShowSettings(true)} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors">
+          <Settings className="w-10 h-10 md:w-[84px] md:h-[84px]" />
         </button>
       </div>
 
@@ -158,18 +158,18 @@ export default function App() {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 w-full max-w-md"
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 md:p-8 w-full max-w-md"
             >
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold">Settings</h2>
+              <div className="flex justify-between items-center mb-6 md:mb-8">
+                <h2 className="text-xl md:text-3xl font-bold">Settings</h2>
                 <button onClick={() => setShowSettings(false)} className="text-zinc-400 hover:text-white">
-                  <X size={36} />
+                  <X className="w-6 h-6 md:w-9 md:h-9" />
                 </button>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 <div>
-                  <h3 className="text-xl font-medium text-zinc-400 mb-4">Starting Life</h3>
+                  <h3 className="text-lg md:text-xl font-medium text-zinc-400 mb-3 md:mb-4">Starting Life</h3>
                   <div className="flex gap-3">
                     {[20, 30, 40].map(life => (
                       <button
@@ -179,7 +179,7 @@ export default function App() {
                           resetGame(life);
                           setShowSettings(false);
                         }}
-                        className={`flex-1 py-4 text-2xl rounded-lg font-bold transition-colors ${
+                        className={`flex-1 py-2 md:py-4 text-xl md:text-2xl rounded-lg font-bold transition-colors ${
                           startingLife === life 
                             ? 'bg-indigo-600 text-white' 
                             : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
@@ -196,7 +196,7 @@ export default function App() {
                     resetGame();
                     setShowSettings(false);
                   }}
-                  className="w-full py-4 text-2xl bg-red-600/20 text-red-500 hover:bg-red-600/30 rounded-lg font-bold transition-colors"
+                  className="w-full py-3 md:py-4 text-xl md:text-2xl bg-red-600/20 text-red-500 hover:bg-red-600/30 rounded-lg font-bold transition-colors"
                 >
                   Reset Game Now
                 </button>
@@ -219,14 +219,14 @@ export default function App() {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-12 flex flex-col items-center gap-12 shadow-2xl min-w-[400px]"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12 flex flex-col items-center gap-8 md:gap-12 shadow-2xl min-w-[250px] md:min-w-[400px]"
             >
-              <span className="text-8xl font-bold tracking-tighter drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)] text-white">
+              <span className="text-6xl md:text-8xl font-bold tracking-tighter drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)] text-white">
                 {diceResult}
               </span>
               <button 
                 onPointerDown={() => setDiceResult(null)}
-                className="w-full py-6 bg-indigo-600 hover:bg-indigo-700 text-white text-4xl font-bold rounded-2xl transition-colors touch-none select-none"
+                className="w-full py-4 md:py-6 bg-indigo-600 hover:bg-indigo-700 text-white text-2xl md:text-4xl font-bold rounded-2xl transition-colors touch-none select-none"
               >
                 OK
               </button>
@@ -301,7 +301,7 @@ function PlayerArea({
       {/* Life Tap Areas */}
       <div className="absolute inset-0 flex z-0 touch-none">
         <motion.button 
-          className="relative flex-1 flex items-center justify-start pl-8 select-none" 
+          className="relative flex-1 flex items-center justify-start pl-4 md:pl-8 select-none" 
           whileTap="tapped"
           variants={{ tapped: { backgroundColor: "rgba(0,0,0,0.2)" } }}
           onPointerDown={handleMinus}
@@ -313,18 +313,18 @@ function PlayerArea({
                 initial={{ opacity: 0, scale: 0.5, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.5 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl font-bold text-white drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] pointer-events-none"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl md:text-7xl font-bold text-white drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] pointer-events-none"
               >
                 {minusDelta}
               </motion.div>
             )}
           </AnimatePresence>
           <motion.div variants={{ tapped: { opacity: 0.8 } }} className="opacity-40 drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]">
-            <Minus size={96} />
+            <Minus className="w-16 h-16 md:w-24 md:h-24" />
           </motion.div>
         </motion.button>
         <motion.button 
-          className="relative flex-1 flex items-center justify-end pr-8 select-none" 
+          className="relative flex-1 flex items-center justify-end pr-4 md:pr-8 select-none" 
           whileTap="tapped"
           variants={{ tapped: { backgroundColor: "rgba(0,0,0,0.2)" } }}
           onPointerDown={handlePlus}
@@ -336,21 +336,21 @@ function PlayerArea({
                 initial={{ opacity: 0, scale: 0.5, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.5 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl font-bold text-white drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] pointer-events-none"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl md:text-7xl font-bold text-white drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] pointer-events-none"
               >
                 +{plusDelta}
               </motion.div>
             )}
           </AnimatePresence>
           <motion.div variants={{ tapped: { opacity: 0.8 } }} className="opacity-40 drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]">
-            <Plus size={96} />
+            <Plus className="w-16 h-16 md:w-24 md:h-24" />
           </motion.div>
         </motion.button>
       </div>
 
       {/* Main Life Display */}
       <div className="pointer-events-none z-10 flex flex-col items-center">
-        <span className="text-[18rem] leading-none font-bold tracking-tighter drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]">
+        <span className="text-[10rem] md:text-[18rem] leading-none font-bold tracking-tighter drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]">
           {player.life}
         </span>
       </div>
@@ -359,9 +359,9 @@ function PlayerArea({
       <div className="absolute top-4 left-4 z-20">
         <button 
           onClick={() => setShowColorPicker(!showColorPicker)}
-          className="p-3 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm transition-colors"
+          className="p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm transition-colors"
         >
-          <Palette size={30} className="opacity-70" />
+          <Palette className="w-6 h-6 md:w-8 md:h-8 opacity-70" />
         </button>
         
         <AnimatePresence>
@@ -370,7 +370,7 @@ function PlayerArea({
               initial={{ opacity: 0, scale: 0.9, x: -10 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.9, x: -10 }}
-              className="absolute top-16 left-0 flex flex-col gap-3 bg-black/40 backdrop-blur-md p-3 rounded-2xl"
+              className="absolute top-12 md:top-16 left-0 flex flex-col gap-2 md:gap-3 bg-black/40 backdrop-blur-md p-2 md:p-3 rounded-2xl"
             >
               {colors.map(c => (
                 <button
@@ -379,7 +379,7 @@ function PlayerArea({
                     updatePlayer(player.id, { color: c });
                     setShowColorPicker(false);
                   }}
-                  className={`w-12 h-12 rounded-full border-[3px] ${player.color === c ? 'border-white' : 'border-transparent'} ${COLOR_MAP[c].split(' ')[0]}`}
+                  className={`w-8 h-8 md:w-12 md:h-12 rounded-full border-[3px] ${player.color === c ? 'border-white' : 'border-transparent'} ${COLOR_MAP[c].split(' ')[0]}`}
                 />
               ))}
             </motion.div>
@@ -388,7 +388,7 @@ function PlayerArea({
       </div>
 
       {/* Bottom: Counters */}
-      <div className="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-6 z-20 pointer-events-none">
+      <div className="absolute bottom-4 md:bottom-8 left-0 right-0 flex flex-col items-center gap-3 md:gap-6 z-20 pointer-events-none">
         
         {/* Active Counter Controls */}
         <AnimatePresence mode="wait">
@@ -397,23 +397,23 @@ function PlayerArea({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
-              className="flex items-center gap-6 bg-black/40 backdrop-blur-md p-3 rounded-3xl pointer-events-auto"
+              className="flex items-center gap-3 md:gap-6 bg-black/40 backdrop-blur-md p-2 md:p-3 rounded-2xl md:rounded-3xl pointer-events-auto"
             >
               <motion.button 
                 onPointerDown={() => activeCounter === 'commander' ? changeCommanderDamage(-1) : changeCounter(activeCounter, -1)}
                 whileTap={{ scale: 0.95, backgroundColor: "rgba(0,0,0,0.4)" }}
-                className="w-16 h-16 flex items-center justify-center bg-black/20 rounded-2xl hover:bg-black/40 touch-none select-none"
+                className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-black/20 rounded-xl md:rounded-2xl hover:bg-black/40 touch-none select-none"
               >
-                <Minus size={36} />
+                <Minus className="w-6 h-6 md:w-9 md:h-9" />
               </motion.button>
               
-              <div className="w-24 text-center flex flex-col items-center">
-                <span className="text-5xl font-bold">
+              <div className="w-16 md:w-24 text-center flex flex-col items-center">
+                <span className="text-3xl md:text-5xl font-bold">
                   {activeCounter === 'commander' 
                     ? (player.commanderDamage[opponent.id] || 0) 
                     : player[activeCounter]}
                 </span>
-                <span className="text-sm uppercase tracking-wider opacity-70 mt-1">
+                <span className="text-xs md:text-sm uppercase tracking-wider opacity-70 mt-1">
                   {activeCounter}
                 </span>
               </div>
@@ -421,36 +421,36 @@ function PlayerArea({
               <motion.button 
                 onPointerDown={() => activeCounter === 'commander' ? changeCommanderDamage(1) : changeCounter(activeCounter, 1)}
                 whileTap={{ scale: 0.95, backgroundColor: "rgba(0,0,0,0.4)" }}
-                className="w-16 h-16 flex items-center justify-center bg-black/20 rounded-2xl hover:bg-black/40 touch-none select-none"
+                className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-black/20 rounded-xl md:rounded-2xl hover:bg-black/40 touch-none select-none"
               >
-                <Plus size={36} />
+                <Plus className="w-6 h-6 md:w-9 md:h-9" />
               </motion.button>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Counter Toggles */}
-        <div className="flex gap-4 pointer-events-auto">
+        <div className="flex gap-2 md:gap-4 pointer-events-auto">
           <CounterToggle 
-            icon={<Droplet size={36} />} 
+            icon={<Droplet className="w-6 h-6 md:w-9 md:h-9" />} 
             value={player.poison} 
             isActive={activeCounter === 'poison'} 
             onClick={() => setActiveCounter(activeCounter === 'poison' ? null : 'poison')} 
           />
           <CounterToggle 
-            icon={<ShieldAlert size={36} />} 
+            icon={<ShieldAlert className="w-6 h-6 md:w-9 md:h-9" />} 
             value={player.commanderDamage[opponent.id] || 0} 
             isActive={activeCounter === 'commander'} 
             onClick={() => setActiveCounter(activeCounter === 'commander' ? null : 'commander')} 
           />
           <CounterToggle 
-            icon={<Zap size={36} />} 
+            icon={<Zap className="w-6 h-6 md:w-9 md:h-9" />} 
             value={player.energy} 
             isActive={activeCounter === 'energy'} 
             onClick={() => setActiveCounter(activeCounter === 'energy' ? null : 'energy')} 
           />
           <CounterToggle 
-            icon={<GraduationCap size={36} />} 
+            icon={<GraduationCap className="w-6 h-6 md:w-9 md:h-9" />} 
             value={player.experience} 
             isActive={activeCounter === 'experience'} 
             onClick={() => setActiveCounter(activeCounter === 'experience' ? null : 'experience')} 
@@ -475,7 +475,7 @@ function CounterToggle({
   return (
     <button 
       onClick={onClick}
-      className={`flex items-center gap-3 px-6 py-4 rounded-full backdrop-blur-sm transition-all ${
+      className={`flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-4 rounded-full backdrop-blur-sm transition-all ${
         isActive 
           ? 'bg-white text-black shadow-lg scale-110' 
           : value > 0 
@@ -484,7 +484,7 @@ function CounterToggle({
       }`}
     >
       {icon}
-      {value > 0 && <span className="font-bold text-2xl">{value}</span>}
+      {value > 0 && <span className="font-bold text-lg md:text-2xl">{value}</span>}
     </button>
   );
 }
