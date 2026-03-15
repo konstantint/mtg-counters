@@ -49,7 +49,8 @@ Contains the following controls:
 - On load, the app must restore the exact state from `localStorage` if it exists.
 
 ### Interaction & Performance
-- **Zero Touch Delay**: All interactive elements (buttons, tap areas) must use `onPointerDown` instead of `onClick` to bypass the 300ms mobile browser delay.
+- **Zero Touch Delay**: Rapid-fire interactive elements (life tap areas, counter increment/decrement) must use `onPointerDown` instead of `onClick` to bypass the 300ms mobile browser delay and provide immediate response.
+- **Intentional Interaction**: Buttons that trigger modals or significant UI state changes (Settings, Reset, Dice/Coin) must use `onClick` to prevent accidental "auto-clicks" on elements that appear or change immediately under the user's finger.
 - **Tap Highlights**: Use `framer-motion`'s `whileTap` for immediate, non-sticky visual feedback on buttons and tap areas (avoiding CSS `:active` pseudo-classes which can get stuck on mobile Safari).
 - **Touch Handling**: Use `touch-none` and `select-none` CSS classes on interactive areas to prevent accidental zooming, panning, or text selection during rapid tapping.
 

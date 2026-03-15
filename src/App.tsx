@@ -119,20 +119,20 @@ export default function App() {
 
       {/* Middle Bar */}
       <div className="h-24 md:h-48 bg-zinc-950 flex items-center justify-center gap-6 md:gap-12 z-30 shadow-2xl border-y border-zinc-800 relative touch-none select-none">
-        <button onPointerDown={() => resetGame()} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors">
+        <button onClick={() => resetGame()} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors">
           <RotateCcw className="w-10 h-10 md:w-[84px] md:h-[84px]" />
         </button>
         
         <div className="flex items-center gap-4 md:gap-8">
-          <button onPointerDown={() => rollDice(20)} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-2 md:gap-4 text-2xl md:text-5xl font-bold">
+          <button onClick={() => rollDice(20)} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-2 md:gap-4 text-2xl md:text-5xl font-bold">
             <Dices className="w-10 h-10 md:w-[84px] md:h-[84px]" /> d20
           </button>
-          <button onPointerDown={() => flipCoin()} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-2 md:gap-4 text-2xl md:text-5xl font-bold">
+          <button onClick={() => flipCoin()} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors flex items-center gap-2 md:gap-4 text-2xl md:text-5xl font-bold">
             Coin
           </button>
         </div>
 
-        <button onPointerDown={() => setShowSettings(true)} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors">
+        <button onClick={() => setShowSettings(true)} className="p-2 md:p-4 text-zinc-400 hover:text-white transition-colors">
           <Settings className="w-10 h-10 md:w-[84px] md:h-[84px]" />
         </button>
       </div>
@@ -225,7 +225,7 @@ export default function App() {
                 {diceResult}
               </span>
               <button 
-                onPointerDown={() => setDiceResult(null)}
+                onClick={() => setDiceResult(null)}
                 className="w-full py-4 md:py-6 bg-indigo-600 hover:bg-indigo-700 text-white text-2xl md:text-4xl font-bold rounded-2xl transition-colors touch-none select-none"
               >
                 OK
