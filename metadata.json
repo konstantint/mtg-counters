@@ -1,0 +1,5 @@
+{
+  "name": "MTG Life Tracker",
+  "description": "A companion app for Magic: The Gathering to track life totals, poison counters, and other game stats for two players.",
+  "requestFramePermissions": []
+}
