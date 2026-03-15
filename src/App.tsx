@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Settings, RotateCcw, Dices, Droplet, Zap, GraduationCap, ShieldAlert, Palette, X, Plus, Minus } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -252,6 +252,32 @@ function PlayerArea({
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [activeCounter, setActiveCounter] = useState<'poison' | 'energy' | 'experience' | 'commander' | null>(null);
 
+  const [plusDelta, setPlusDelta] = useState(0);
+  const [minusDelta, setMinusDelta] = useState(0);
+  const plusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const minusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (plusTimeoutRef.current) clearTimeout(plusTimeoutRef.current);
+      if (minusTimeoutRef.current) clearTimeout(minusTimeoutRef.current);
+    };
+  }, []);
+
+  const handlePlus = () => {
+    changeLife(1);
+    setPlusDelta(prev => prev + 1);
+    if (plusTimeoutRef.current) clearTimeout(plusTimeoutRef.current);
+    plusTimeoutRef.current = setTimeout(() => setPlusDelta(0), 1000);
+  };
+
+  const handleMinus = () => {
+    changeLife(-1);
+    setMinusDelta(prev => prev - 1);
+    if (minusTimeoutRef.current) clearTimeout(minusTimeoutRef.current);
+    minusTimeoutRef.current = setTimeout(() => setMinusDelta(0), 1000);
+  };
+
   const changeLife = (amount: number) => {
     updatePlayer(player.id, { life: player.life + amount });
   };
@@ -275,23 +301,47 @@ function PlayerArea({
       {/* Life Tap Areas */}
       <div className="absolute inset-0 flex z-0 touch-none">
         <motion.button 
-          className="flex-1 flex items-center justify-start pl-8 select-none" 
+          className="relative flex-1 flex items-center justify-start pl-8 select-none" 
           whileTap="tapped"
           variants={{ tapped: { backgroundColor: "rgba(0,0,0,0.2)" } }}
-          onPointerDown={() => changeLife(-1)}
+          onPointerDown={handleMinus}
           aria-label="Decrease Life"
         >
+          <AnimatePresence>
+            {minusDelta < 0 && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl font-bold text-white drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] pointer-events-none"
+              >
+                {minusDelta}
+              </motion.div>
+            )}
+          </AnimatePresence>
           <motion.div variants={{ tapped: { opacity: 0.8 } }} className="opacity-40 drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]">
             <Minus size={96} />
           </motion.div>
         </motion.button>
         <motion.button 
-          className="flex-1 flex items-center justify-end pr-8 select-none" 
+          className="relative flex-1 flex items-center justify-end pr-8 select-none" 
           whileTap="tapped"
           variants={{ tapped: { backgroundColor: "rgba(0,0,0,0.2)" } }}
-          onPointerDown={() => changeLife(1)}
+          onPointerDown={handlePlus}
           aria-label="Increase Life"
         >
+          <AnimatePresence>
+            {plusDelta > 0 && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl font-bold text-white drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)] pointer-events-none"
+              >
+                +{plusDelta}
+              </motion.div>
+            )}
+          </AnimatePresence>
           <motion.div variants={{ tapped: { opacity: 0.8 } }} className="opacity-40 drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]">
             <Plus size={96} />
           </motion.div>
