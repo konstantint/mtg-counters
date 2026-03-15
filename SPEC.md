@@ -4,7 +4,7 @@
 A two-player, mobile-first web application for tracking life totals and various counters in Magic: The Gathering. The interface is split into two halves, one for each player, with a central utility bar.
 
 ## Layout & Orientation
-- **Full Screen**: The app takes up the entire viewport (`h-screen`, `w-full`), preventing scrolling (`overflow-hidden`).
+- **Full Screen**: The app takes up the entire viewport (`h-dvh`, `w-full`), preventing scrolling (`overflow-hidden`).
 - **Player 2 Area (Top)**: Rotated 180 degrees so a player sitting across the table can read it.
 - **Middle Utility Bar**: A horizontal bar separating the two players.
 - **Player 1 Area (Bottom)**: Normal orientation.

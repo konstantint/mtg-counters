@@ -108,7 +108,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full bg-zinc-950 text-white overflow-hidden font-sans select-none">
+    <div className="flex flex-col h-dvh w-full bg-zinc-950 text-white overflow-hidden font-sans select-none">
       {/* Player 2 (Top, Rotated) */}
       <PlayerArea 
         player={players[1]} 
