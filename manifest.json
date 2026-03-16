@@ -1,6 +1,6 @@
 {
-  "name": "MTG Life Counter",
-  "short_name": "MTG Life",
+  "name": "MtG Life Counters",
+  "short_name": "MtG Life",
   "description": "A companion app for Magic: The Gathering to track life totals and counters.",
   "start_url": "/mtg-counters/",
   "display": "standalone",
