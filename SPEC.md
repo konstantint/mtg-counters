@@ -48,6 +48,15 @@ Contains the following controls:
 - All game state (player life, secondary counters, chosen colors, and starting life preference) must be automatically saved to `localStorage`.
 - On load, the app must restore the exact state from `localStorage` if it exists.
 
+### Progressive Web App (PWA)
+- The app is configured as a PWA, allowing it to be installed on mobile devices for an app-like experience.
+- **Manifest**: Located at `/public/manifest.json`, defines theme colors, icons, and display mode.
+- **Service Worker**: Located at `/public/sw.js`, provides **offline support** by caching assets using a stale-while-revalidate strategy. This ensures the app remains functional even without an internet connection after the initial load.
+- **Icons**: PNG icons must be provided in `/public/icons/` in the following sizes:
+  - `icon-180.png`: For iOS Apple Touch Icon.
+  - `icon-192.png`: Standard PWA icon for Android.
+  - `icon-512.png`: Large PWA icon and splash screen.
+
 ### Interaction & Performance
 - **High-Frequency Response**: Rapid-fire interactive elements for adjusting values (life tap areas, `+`/`-` counter adjustment buttons) must use `onPointerDown` instead of `onClick` to bypass the 300ms mobile browser delay and provide immediate response.
 - **Intentional Interaction**: Buttons that trigger modals, toggle menus, or cause significant UI state changes (Settings, Reset, Dice/Coin, Color Picker, and opening counter control panels) should use `onClick` to prevent accidental triggers during navigation.

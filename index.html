@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple MTG Counters</title>
+    <meta name="theme-color" content="#2d3748" />
+    <meta name="description" content="A companion app for Magic: The Gathering to track life totals and counters." />
+    <link rel="manifest" href="/mtg-counters/manifest.json" />
+    <link rel="apple-touch-icon" href="/mtg-counters/icons/icon-180.png" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/mtg-counters/sw.js')
+            .then((registration) => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, (error) => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
 
